@@ -1,0 +1,66 @@
+@import"./fonts.css";
+
+h1{
+    font-family: "Space-mono";
+    font-size: 6rem;
+    font-weight: bold;
+    font-style: italic;
+    color: $text-Color;
+}
+h2{
+    font-family: "Space-mono";
+    font-size: 4.125rem;
+    font-weight: 400;
+    font-style: italic;
+    color: $text-Color;
+}
+h3{
+    font-family: "Space-mono";
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: $text-Color;
+}
+.imgDescription{
+    font-family: 'Space-mona';
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 20.73px;
+    letter-spacing: 10%;
+    color: $text-Color;
+}
+p{
+    font-family: 'Poppins';
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.3rem;
+    color: $text-Color;
+}
+@supports (-webkit-text-stroke: 3px $white) {
+    .hero-slogan{
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke: 3px $white;
+    }
+}
+.hero-slogan{
+    font-family: 'Space-mona';
+    font-weight: 700;
+    font-style: italic;
+    font-size: 6rem;
+    line-height: 8.9rem;
+    
+    text-transform: uppercase;
+    
+
+}
+
+@media screen and (max-width: $bpMobile){
+    h1{
+       font-size: 1.8rem; 
+    }
+    h2{
+        font-size: 2.875rem; 
+    }
+     h3{
+        font-size: 1.125rem; 
+    }
+}

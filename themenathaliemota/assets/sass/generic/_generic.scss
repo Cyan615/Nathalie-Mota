@@ -1,0 +1,27 @@
+
+html {
+	box-sizing: border-box;
+    font-size: 14px;
+}
+body{
+    max-width: 1440px;
+}
+a{
+    font-size: 1rem;
+    font-family: 'Space-mono';
+    line-height: 1.48rem;
+    color: $text-Color;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+a:hover{
+    font-weight: 700;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+li{
+    list-style-type: none;
+}

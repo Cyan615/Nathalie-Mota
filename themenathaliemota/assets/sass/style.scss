@@ -1,0 +1,16 @@
+// variables abstract folder
+
+@import 'abstract/variables';
+
+
+
+// base folder
+@import 'generic/normalize';
+@import 'generic/generic';
+@import 'generic/typography';
+
+// navigation folder
+@import 'layouts/navigation';
+@import 'layouts/banner';
+@import 'layouts/footer';
+
