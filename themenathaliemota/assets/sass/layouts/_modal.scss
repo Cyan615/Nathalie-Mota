@@ -1,0 +1,55 @@
+
+#contactModal{ 
+    position: fixed;
+    z-index: 999;
+    top: 0vh;
+    left: 0vw;
+    width:100vw;
+    height:100vh;
+    display: none;
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+.modal-content{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 42.6rem;
+    height: 54.9rem;
+    background-color: $white;
+    overflow: hidden;
+    transform: translate(-50%, -100vw);
+    transition: 0.4s all ease-in-out;
+    &__closebtn{
+        position: absolute;
+        bottom: 3%;
+        right: 3%;
+        cursor: pointer;
+        border:1px solid #fe5858;
+        border-radius: 40%;
+        height: 5%;
+        transition: 0.4s all ease-in-out;
+    }
+    &__closebtn:hover{
+        transform: scale(1.4);
+        background: rgb(255,214,214);
+        background: radial-gradient(circle, rgba(255,214,214,1) 29%, rgba(49,49,68,1) 92%);
+    }
+    &__header{
+        background-image:  url("./../assets/images/Contact.png");
+        background-size: 22rem;
+        background-position-x: right;
+        height: 7.6rem;
+        width: 63.3rem;
+        margin-top: 1.3rem;
+    }
+    &__body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include font-form;
+    }
+    &--open{
+        transform: translate(-50%, -50%);
+    }
+}

@@ -1,6 +1,7 @@
 // variables abstract folder
 
 @import 'abstract/variables';
+@import 'abstract/mixins';
 
 
 
@@ -9,8 +10,11 @@
 @import 'generic/generic';
 @import 'generic/typography';
 
+@import 'components/formulaire';
+
 // navigation folder
 @import 'layouts/navigation';
 @import 'layouts/banner';
 @import 'layouts/footer';
+@import 'layouts/modal';
 

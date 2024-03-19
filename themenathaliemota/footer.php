@@ -8,6 +8,8 @@
                 ));  ?>
   
         </nav>
+
+    <?php get_template_part('templates-part/modalcontact'); ?>    
     
     <?php wp_footer();  ?>
 

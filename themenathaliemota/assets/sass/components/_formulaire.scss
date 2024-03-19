@@ -1,0 +1,23 @@
+.input-design{
+    width: $width-form-input;
+    height: 2.9rem;
+    @include border-form;
+    @include margin-form;
+}
+.textarea-design{
+    width: $width-form-input;
+    height: 15rem;
+    @include border-form;
+    @include margin-form;
+}
+.wpcf7-submit{
+    width: $width-form-input;
+    height: 3.6rem;
+    border-radius: 2px;
+    Padding: 8px 15px;
+    background-color: $greyMedium;
+    border:none;
+    font-family: 'Space-mona';
+    font-weight: 400;
+    color: $text-Color;
+}
