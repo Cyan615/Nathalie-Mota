@@ -1,5 +1,5 @@
 @import "./fonts.css";
-@keyframes animate {
+@keyframes animateModal {
   0% {
     transform: translateY(-120vh);
     opacity: 0.5;
@@ -539,12 +539,11 @@ p {
   overflow-x: hidden;
   max-width: calc(100vw - 30px);
   max-height: calc(100vh - 30px);
-  animation: animatemodal 0.4s ease-in-out;
 }
 .modal-content__closebtn {
   position: absolute;
-  bottom: 6%;
-  right: 3%;
+  bottom: -2%;
+  right: 11%;
   border: 1px solid #fe5858;
   border-radius: 40%;
   height: 5%;
@@ -575,4 +574,8 @@ p {
   color: #313144;
   text-transform: uppercase;
   padding: 1rem 0;
+}
+
+.show .modal-content {
+  animation: animateModal 0.2s 0.4s ease-in-out backwards;
 }/*# sourceMappingURL=style.css.map */

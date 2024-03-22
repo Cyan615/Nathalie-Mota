@@ -28,12 +28,12 @@ function mota_register_scripts(){
 
 // affichage du lien 'Contact' dans le menu header
 function contact_modal_add($items, $args){
-    if(is_user_logged_in() && $args->theme_location == 'main-menu'){
+    
         $contactItemMenu = '<li id="menu-item-20" class="open-popup menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-8 current_page_item menu-item-20">
         <a href="'.get_site_url().'/wp-content/theme/themenathaliemota/templates-part/modalcontact.php/"  aria-current="page" itemprop="url">contact</a></li>';
         
         $items .= $contactItemMenu;
-    }
+    
     return $items;
 };
 

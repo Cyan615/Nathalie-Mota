@@ -12,7 +12,10 @@ window.onload = () => {
     function openModal(e) {
         e.preventDefault();
         modal.style.display = null ;
-        modal.classList.add('show');
+        
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 200);
         
         console.log(modal);
     }
@@ -25,7 +28,7 @@ window.onload = () => {
     console.log(closeModal);
     
     modalBtnOpen.addEventListener("click", openModal);
-    
+    document.querySelector('.modal-content__closebtn').onclick = closeModal();
 
 }
 
