@@ -2,35 +2,41 @@
 #contactModal{ 
     position: fixed;
     z-index: 999;
-    top: 0vh;
-    left: 0vw;
-    width:100vw;
-    height:100vh;
-    display: none;
-    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    overflow-y: auto;
+    opacity: 0;
+    transition: .3s;
+    &.show{
+        opacity: 1;
+    }
 }
 .modal-content{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin: auto;
+    background-color: $white;
     width: 42.6rem;
     height: 54.9rem;
-    background-color: $white;
-    overflow: hidden;
-    transform: translate(-50%, -100vw);
-    transition: 0.4s all ease-in-out;
+    overflow-x: hidden;
+    max-width: calc(100vw - 30px);
+    max-height: calc(100vh - 30px);
+    animation: animatemodal 0.4s ease-in-out;
+    
     &__closebtn{
         position: absolute;
-        bottom: 3%;
+        bottom: 6%;
         right: 3%;
-        cursor: pointer;
         border:1px solid #fe5858;
         border-radius: 40%;
         height: 5%;
         transition: 0.4s all ease-in-out;
     }
     &__closebtn:hover{
+        cursor: pointer;
         transform: scale(1.4);
         background: rgb(255,214,214);
         background: radial-gradient(circle, rgba(255,214,214,1) 29%, rgba(49,49,68,1) 92%);
@@ -49,7 +55,5 @@
         align-items: center;
         @include font-form;
     }
-    &--open{
-        transform: translate(-50%, -50%);
-    }
+    
 }

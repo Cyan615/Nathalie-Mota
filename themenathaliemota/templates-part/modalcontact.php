@@ -1,7 +1,7 @@
-<section class="contact-form" id="contactModal">
+<section id="contactModal" role="dialog" style="display: none;">
 
-    <article class="modal-content">
-        <button class="modal-content__closebtn" onclick="closeModal()">close</button>
+    <article class="modal-content show">
+        <button class="modal-content__closebtn" onclick="closeModal()" data-dismiss="dialog">close</button>
         <!-- en-tête de la modal -->
         <div class="modal-content__header"></div>
         <!-- corp de la modal -->

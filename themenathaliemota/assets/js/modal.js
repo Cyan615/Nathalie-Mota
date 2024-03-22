@@ -1,20 +1,36 @@
 console.log('OK modal js');
+window.onload = () => {
+    const modalBtnOpen = document.getElementById('menu-item-20');
+    const modal = document.getElementById('contactModal');
+    const modalContent = document.querySelector('.modal-content');
+    // const modalBtnClose = document.getElementsByClassName('modal-content__closebtn');
+    console.log(modalBtnOpen);
+    console.log(modal);
+    console.log(modalContent);
+    
 
-let popup = document.getElementById('contactModal');
+    function openModal(e) {
+        e.preventDefault();
+        modal.style.display = null ;
+        modal.classList.add('show');
+        
+        console.log(modal);
+    }
 
-let open = document.getElementById('menu-item-20');
+    function closeModal() {
+        modal.style.display = "none";
+        modal.classList.remove('show');
+        
+    }
+    console.log(closeModal);
+    
+    modalBtnOpen.addEventListener("click", openModal);
+    
 
-let close = document.getElementsByClassName('closebtn');
-
-open.onclick = function(){
-    popup.style.display = "flex";
-    document.querySelector('.modal-content').classList.add('modal-content--open');
 }
 
-function closeModal() {
-    popup.style.display = "none";
-    document.querySelector('.modal-content').classList.remove('modal-content--open');
-}
+
+
+
   
 
-console.log(closeModal());

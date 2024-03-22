@@ -16,3 +16,23 @@
     margin-top: 0.1rem;
     margin-bottom: 0.8rem;
 }
+@keyframes animate {
+    0%{
+        transform: translateY(-120vh);
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@-webkit-keyframes animate {
+    0%{
+        transform: translateY(-120vh);
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
