@@ -6,22 +6,22 @@
     "post_type": "photographie",
     "advanced_configuration": true,
     "import_source": "cptui",
-    "import_date": 1711019974,
+    "import_date": 1711132483,
     "labels": {
         "name": "Photographies",
         "singular_name": "Photographie",
-        "menu_name": "Photos",
-        "all_items": "Toutes les photos",
+        "menu_name": "",
+        "all_items": "",
+        "add_new": "",
+        "add_new_item": "",
         "edit_item": "",
+        "new_item": "",
         "view_item": "",
         "view_items": "",
-        "add_new_item": "",
-        "add_new": "",
-        "new_item": "",
-        "parent_item_colon": "",
         "search_items": "",
         "not_found": "",
         "not_found_in_trash": "",
+        "parent_item_colon": "",
         "archives": "",
         "attributes": "",
         "featured_image": "",
@@ -40,7 +40,9 @@
         "item_scheduled": "",
         "item_updated": "",
         "item_link": "",
-        "item_link_description": ""
+        "item_link_description": "",
+        "name_admin_bar": "",
+        "item_trashed": ""
     },
     "description": "",
     "public": true,
@@ -63,29 +65,29 @@
     "plural_capability_name": "posts",
     "supports": [
         "title",
-        "author",
         "editor",
-        "revisions",
         "thumbnail",
-        "custom-fields"
+        "custom-fields",
+        "author"
     ],
     "taxonomies": [
-        "format",
-        "categorie"
+        "categorie",
+        "format"
     ],
     "has_archive": false,
     "has_archive_slug": "",
     "rewrite": {
         "permalink_rewrite": "post_type_key",
-        "with_front": "1",
-        "feeds": "0",
-        "pages": "1"
+        "slug": "",
+        "feeds": false,
+        "pages": true,
+        "with_front": true
     },
     "query_var": "post_type_key",
     "query_var_name": "",
     "can_export": false,
     "delete_with_user": false,
-    "register_meta_box_cb": "",
+    "register_meta_box_cb": null,
     "enter_title_here": "",
-    "modified": 1711037334
+    "modified": 1711132483
 }

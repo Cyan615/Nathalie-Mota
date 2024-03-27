@@ -30,12 +30,8 @@
 
         </nav>
 
-        <section class="banner">
-            <img class="banner__img" src="<?php echo get_theme_file_uri().'./assets/images/nathalie-0.jpeg'; ?>" alt="">
-            <p class="banner__slogan hero-slogan">photographe event</p>
-
-        </section>
+        
 
     </header>
 
-    <main class="container">
+    

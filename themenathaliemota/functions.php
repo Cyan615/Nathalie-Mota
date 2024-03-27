@@ -1,4 +1,16 @@
 <?php
+
+function mota_add_admin_pages() {
+    add_menu_page(__('Paramètres du thème Nathalie-Mota', 'nathaliemota'), __('Nathalie-Mota', 'nathaliemota'), 'manage_options', 'nathaliemota-settings', 'nathaliemota_theme_settings', 'dashicons-admin-settings', 60);
+    }
+    
+    function nathaliemota_theme_settings() {
+    echo '<h1>'.get_admin_page_title().'</h1>';
+    }
+    
+    add_action('admin_menu', 'mota_add_admin_pages', 10);
+
+
 // Déclaration des fonctions
 function mota_setup(){
     add_theme_support('title-tag');

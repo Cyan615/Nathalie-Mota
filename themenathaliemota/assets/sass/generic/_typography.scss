@@ -47,10 +47,17 @@ p{
     font-style: italic;
     font-size: 6rem;
     line-height: 8.9rem;
-    
     text-transform: uppercase;
-    
-
+}
+button{
+    font-family: 'Space-mono';
+    font-weight: 400;
+    font-size: 0.86rem;
+    line-height: 1.27rem;
+    color: $text-Color;
+    &:hover{
+        font-weight: 700;
+    }
 }
 
 @media screen and (max-width: $bpMobile){
