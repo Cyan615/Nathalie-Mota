@@ -323,10 +323,12 @@ template {
 html {
   box-sizing: border-box;
   font-size: 14px;
+  width: 1440px;
+  margin: auto;
 }
 
 body {
-  max-width: 1440px;
+  border: 1px solid rgb(82, 242, 247);
 }
 
 a {
@@ -350,6 +352,19 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  margin: auto;
+}
+
+.arrow {
+  width: 25px;
 }
 
 h1 {
@@ -489,6 +504,16 @@ button:hover {
 
 .arrows {
   content: "←";
+  width: 25px;
+}
+.arrows:hover {
+  width: 35px;
+}
+
+.open-popup {
+  width: 272px;
+  height: 50px;
+  padding: 8px 15px 8px 15px;
 }
 
 .navbar {
@@ -500,10 +525,10 @@ button:hover {
   max-width: 100vw;
 }
 .navbar__logo {
-  padding-left: 10.4rem;
+  padding-left: 7vw;
 }
 .navbar__menu {
-  margin-right: 12.8rem;
+  margin-right: 7vw;
 }
 
 .custom-logo {
@@ -606,4 +631,88 @@ button:hover {
 
 .show .modal-content {
   animation: animateModal 0.2s 0.4s ease-in-out backwards;
+}
+
+.main-photo {
+  margin: 2rem 7vw 7vw 9.5rem;
+}
+
+.single-postPhoto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.single-postPhoto__photoInRight {
+  width: 29.3vw;
+  max-height: 149.6vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.single-postPhoto__photoInRight > img {
+  padding-left: 0.8rem;
+}
+.single-postPhoto__contactPhoto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 79vw;
+  height: 32vh;
+  border-bottom: 1px solid #000000;
+}
+.single-postPhoto__contactPhoto p {
+  font-size: 14px;
+}
+
+.photo-navigation {
+  display: flex;
+}
+
+.miniatureSize {
+  width: 81px;
+  height: 71px;
+}
+
+.left-blockInfo {
+  width: 50%;
+}
+.left-blockInfo__title {
+  font-size: 4.71rem;
+  line-height: 4.14rem;
+  width: 25vw;
+}
+.left-blockInfo__ref {
+  font-family: "Space-mono";
+  font-size: 1rem;
+  line-height: 1.48rem;
+  letter-spacing: 10%;
+  text-transform: uppercase;
+}
+.left-blockInfo--line {
+  border-top: 1px solid #000000;
+  width: 100%;
+  display: block;
+  margin-right: 0.2rem;
+  margin-top: 1.8rem;
+}
+
+.relatedPicture {
+  margin-top: 8vh;
+}
+.relatedPicture__gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+}
+.relatedPicture__gallery .photoCard {
+  width: 29.4vw;
+  height: 54.3vh;
+}
+
+.frame-photo {
+  width: 100%;
+  height: 100%;
+}
+.frame-photo img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=style.css.map */

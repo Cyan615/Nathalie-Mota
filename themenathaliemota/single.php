@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying single posts
  *
  * @package Nathalie-Mota
  */
@@ -8,11 +8,11 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main container">
+	<main class="main-single container">
 
 		<?php
-		while ( have_posts() ) :
-			the_post();
+		if (have_posts()) :
+		while ( have_posts() ) : the_post();
 
 			get_template_part( 'templates-part/content', get_post_type() );
 
@@ -28,7 +28,8 @@ get_header();
 				comments_template();
 			endif;
 
-		endwhile; // End of the loop.
+		endwhile; 
+		endif;// End of the loop.
 		?>
 
 	</main><!-- #main -->
