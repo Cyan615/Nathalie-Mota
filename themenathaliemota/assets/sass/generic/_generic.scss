@@ -36,4 +36,8 @@ img{
 }
 .arrow{
     width: 25px;
+    padding: 0.2rem;
+    &:hover{
+        transform: scale(1.2);
+    }
 }

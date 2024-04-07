@@ -73,10 +73,10 @@
     			        <?php endif; ?>
     			    </div>
 					<div class="miniature">
-						<div class="prev-miniature miniatureSize">
+						<div id="prev-miniature" class="hide-miniature miniatureSize">
 							<?php echo get_the_post_thumbnail( $prev_post); ?>
 						</div>
-						<div class="next-miniature miniatureSize">
+						<div id='next-miniature' class="hide-miniature miniatureSize">
 							<?php echo get_the_post_thumbnail( $next_post); ?>
 						</div>
     			    </div>
@@ -85,7 +85,7 @@
     			        <?php
     			        if ( ! empty( $next_post )) : ?>
     			        <a href="<?php echo get_permalink( $next_post ); ?>">
-    			        <img class="arrow arrowLeft"src="<?= get_template_directory_uri(); ?>/assets/images/fléche-suivant.svg"alt="fléche suivante" ></a>
+    			        <img class="arrow arrowRight"src="<?= get_template_directory_uri(); ?>/assets/images/fléche-suivant.svg"alt="fléche suivante" ></a>
     			        <?php endif; ?>
     			    </div>
 						
@@ -121,9 +121,9 @@
 		if ($query->have_posts()) {
 			while ($query->have_posts()) : $query->the_post();
 			?>	
-			<div class="photoCard">
-				<?php get_template_part('templates-part/content-photo', 'post'); ?>
-			</div>	
+				
+			<?php get_template_part('templates-part/content-photo', 'post'); ?>
+				
 		<?php	endwhile;
 		};
 		// endif;

@@ -1,0 +1,61 @@
+.photoCard{
+    position: relative;
+    width: 40.29rem;
+    height: 35.36rem;
+    &:hover{
+        .frame-Overlay{
+            display: flex;
+        }
+    }    
+}
+
+
+.frame-photo{
+    width: 100%;
+    height: 100%;
+    & img{
+        object-fit: cover;
+    }
+}
+.frame-Overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 999;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+    flex-direction: column;
+    justify-content: space-between;
+    &__eye{
+        width: 3rem;
+        height: 3rem;
+        display: inline-block;
+        align-self: center;
+       
+    }
+    &__fullscreen{
+        width: 3rem;
+        height: 3rem;
+        align-self: end;
+        padding: 0.5rem;
+    }
+    &__text{
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        
+        text-transform: uppercase;
+        & p{
+            color: $white;
+        }
+    }
+    &:hover{
+        display: flex;
+        opacity: 1;
+    }
+
+}

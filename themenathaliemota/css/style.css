@@ -365,6 +365,10 @@ img {
 
 .arrow {
   width: 25px;
+  padding: 0.2rem;
+}
+.arrow:hover {
+  transform: scale(1.2);
 }
 
 h1 {
@@ -633,6 +637,64 @@ button:hover {
   animation: animateModal 0.2s 0.4s ease-in-out backwards;
 }
 
+.photoCard {
+  position: relative;
+  width: 40.29rem;
+  height: 35.36rem;
+}
+.photoCard:hover .frame-Overlay {
+  display: flex;
+}
+
+.frame-photo {
+  width: 100%;
+  height: 100%;
+}
+.frame-photo img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.frame-Overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 999;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.frame-Overlay__eye {
+  width: 3rem;
+  height: 3rem;
+  display: inline-block;
+  align-self: center;
+}
+.frame-Overlay__fullscreen {
+  width: 3rem;
+  height: 3rem;
+  align-self: end;
+  padding: 0.5rem;
+}
+.frame-Overlay__text {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  text-transform: uppercase;
+}
+.frame-Overlay__text p {
+  color: #ffffff;
+}
+.frame-Overlay:hover {
+  display: flex;
+  opacity: 1;
+}
+
 .main-photo {
   margin: 2rem 7vw 7vw 9.5rem;
 }
@@ -643,7 +705,7 @@ button:hover {
   align-items: flex-end;
 }
 .single-postPhoto__photoInRight {
-  width: 29.3vw;
+  width: 50%;
   max-height: 149.6vh;
   -o-object-fit: contain;
      object-fit: contain;
@@ -656,20 +718,34 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   width: 79vw;
-  height: 32vh;
   border-bottom: 1px solid #000000;
 }
 .single-postPhoto__contactPhoto p {
   font-size: 14px;
+  margin: 3rem 0;
 }
 
 .photo-navigation {
   display: flex;
+  position: relative;
+  margin: 0.3rem;
+  padding-right: 1.4rem;
+  padding-top: 5rem;
+}
+.photo-navigation #prev-miniature {
+  z-index: 2;
 }
 
 .miniatureSize {
   width: 81px;
   height: 71px;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 0.5rem;
+}
+
+.hide-miniature {
+  display: none;
 }
 
 .left-blockInfo {
@@ -696,23 +772,11 @@ button:hover {
 }
 
 .relatedPicture {
-  margin-top: 8vh;
+  margin-top: 7vh;
 }
 .relatedPicture__gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 2rem;
-}
-.relatedPicture__gallery .photoCard {
-  width: 29.4vw;
-  height: 54.3vh;
-}
-
-.frame-photo {
-  width: 100%;
-  height: 100%;
-}
-.frame-photo img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  margin-top: 4vh;
 }/*# sourceMappingURL=style.css.map */
