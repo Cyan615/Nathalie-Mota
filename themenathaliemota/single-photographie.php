@@ -12,14 +12,17 @@
  
 <?php   if  (have_posts()) : 
 		 while ( have_posts() ) :
-			the_post();  ?>
+			the_post();  
 
+			// -- on charge la référence de la photo -->
+		$reference = get_post_meta($post->ID, 'reference', true);	
+?>
 		<section class="single-postPhoto" id="photo-<?php the_ID(); ?>">
 			<article class="left-blockInfo ">
 				<h2 class="left-blockInfo__title"><?php  the_title()  ?></h2>
 	<!-- Afficher les informations de la photographie en cours  --> 
-				<p class="left-blockInfo__ref">référence: <span class="ref">
-			<?php echo get_post_meta($post->ID, 'reference', true); ?></span></p>
+				<p  id="interestRefPhoto" class="left-blockInfo__ref">référence: 
+			<?php echo $reference; ?></p>
 				<p class="left-blockInfo__ref">catégorie: <span class="ref">
 					<?php 
 					$categories = get_the_terms(get_the_ID(), 'categorie'); 
@@ -59,7 +62,7 @@
 			<!-- bloque navigation photo et contacte -->
 			<article class="single-postPhoto__contactPhoto">
     			<p>Cette photo vous intéresse ?</p>
-    			<button class="open-popup">Contact</button>
+    			<button class="open-popup" data-reference="<?php echo $reference; ?>">Contact</button>
     			<div class="photo-navigation">
     			    <?php 
 					$next_post = get_next_post();

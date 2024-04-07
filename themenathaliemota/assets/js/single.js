@@ -15,15 +15,15 @@ window.onload = () => {
         alert('c es la fonction');
     }
     
-    if( prev_picture != null && leftArrow != null) {
-        leftArrow.addEventListener(
-          'mouseenter',
-          function(event) {
-            prev_picture.classList.remove('hide-miniature');
+    // if( prev_picture != null && leftArrow != null) {
+    //     leftArrow.addEventListener(
+    //       'mouseenter',
+    //       function(event) {
+    //         prev_picture.classList.remove('hide-miniature');
               
-            }
-          )
-    }
+    //         }
+    //       )
+    // }
     
 
 
