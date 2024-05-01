@@ -8,51 +8,68 @@
  get_header();
 
  ?>
-
+<main id="primary" class="site-main container">
 <section class="banner">
     <img class="banner__img" src="<?php echo get_theme_file_uri().'./assets/images/nathalie-0.jpeg'; ?>" alt="">
     <h1 class="banner__slogan hero-slogan">photographe event</h1>
 
 </section>
 <section class="catalogPhoto">
-    <label for="filterCategorie">categorie</label>
-    <select class="catalogPhoto__filters" name="filterCategorie">
-        <optgroup>
-            <option value=""></option>
-    <?php
-    $terms = get_terms('categorie'); ?>
-    <?php foreach ($terms as $term) { ?>
-            <option value=""><?php echo $term->name;  ?></option>
-    <?php } ?> 
-        </optgroup>
-    
-    </select>
-    <label for="filterFormat">format</label>
-    <select class="catalogPhoto__filters"  name="filterFormat">
-        <optgroup>
-            <option value=""></option>
-    <?php  
-    $terms = get_terms('format');
-    foreach ($terms as $term) { ?>
+    <article class="catalogPhoto__filters" >
         
-            <option value=""><?php echo $term->name;  ?></option>
-        </optgroup > 
-    
-    <?php } ?>
+        <div class="col1">
+        <!-- Filtre par cathegorie -->
+            <select onchange="updated(this)" class="filter" name="filterCategorie"  id="filterCategorie">
+
+                <option value="all">categorie</option>
+            <?php
+            $terms = get_terms('categorie'); ?>
+            <?php foreach ($terms as $term) { ?>
+                    <option value="<?php echo $term->slug;  ?>"><?php echo $term->name;  ?></option>
+                <?php } ?> 
+            
+            </select>
         
-    </select>
+        <!-- Filtre par format -->
+        
+            <select class="filter"  name="filterFormat" onchange="updated(this)"    id="filterFormat">
+                <option value="all">format</option>    
+            <?php  
+            $terms = get_terms('format');
+            foreach ($terms as $term) { ?>
+
+                    <option value="<?php echo $term->slug;  ?>"><?php echo $term->name;  ?></option>
+            <?php } ?>
+
+            </select>
+        </div>
+        <div class="col2">
+        <!-- filtre par date -->
+            <select name="filterDate" onchange="updated(this)" id="filterDate"  class="filter">
+                
+                <option value="all">trié à partir</option>
+                <option value="DESC">du plus récent</option>
+                <option value="ASC">du plus ancien</option>
+                
+            </select>
+        </div>
+    </article>
+
+<!-- Affichage gallerie photos -->
+    <article class="column-gallery" >
      <?php
-		$query = new WP_Query([
+        $page =  1 ;
+		$homeGallery = new WP_Query([
 			'post_type' => 'photographie',
 			'posts_per_page' => 8,
-			'paged' => 1,
+			'paged' => $page,
 			'orderby' => 'rand',
 			'order' => 'DESC',
-			
-			
+			// affichage de 8 photos au hasard par ordre décroissant par page 
 		]);
-    if ($query->have_posts()) {
-			while ($query->have_posts()) : $query->the_post();
+ // boucle wp_jquery 
+    if ($homeGallery->have_posts()) {
+			while ($homeGallery->have_posts()) : $homeGallery->the_post();
 			
 				
 			get_template_part('templates-part/content-photo', 'post'); 
@@ -62,11 +79,18 @@
         		// réinisialisé la requête wp_query
 		wp_reset_postdata();
     ?>
-    <button class="btn-more">Charger plus</button>
+    </article>
+
+    <button id="loadMorePhoto" class="loadMorePhoto btn-more "
+            data-postId="<?php echo get_the_ID(); ?>",
+            data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
+            data-action="mota_load_more"
+            data-nonce="<?php echo wp_create_nonce('mota_load_more'); ?>"
+        >Charger plus</button>
 
 </section>
 
-
+</main><!-- #main -->
 
 
 <?php get_footer(); ?>

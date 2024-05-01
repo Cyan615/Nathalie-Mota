@@ -28,18 +28,21 @@
     
     &__closebtn{
         position: absolute;
-        bottom: -2%;
+        bottom: 2%;
         right: 11%;
-        border:1px solid #fe5858;
-        border-radius: 40%;
-        height: 5%;
+        border:1px solid $darkBlue;
+        border-radius: 50%;
+        
         transition: 0.4s all ease-in-out;
+        width: 2rem;
+        height: 2rem;
+        background: radial-gradient(circle, $grey 45%, $red3 98%);
     }
     &__closebtn:hover{
         cursor: pointer;
         transform: scale(1.4);
-        background: rgb(255,214,214);
-        background: radial-gradient(circle, rgba(255,214,214,1) 29%, rgba(49,49,68,1) 92%);
+        background: $greyLight;
+        
     }
     &__header{
         background-image:  url("./../assets/images/Contact.png");

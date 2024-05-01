@@ -1,0 +1,60 @@
+.catalogPhoto{
+    display: flex;
+    flex-direction: column;
+    //gap: 3rem;
+    margin: 3rem auto;
+    // width: 100%;
+    & .column-gallery{
+        margin: auto;
+    }
+    &__filters{
+        display: flex;
+        margin: 3rem auto;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
+        width: 80vw;
+        & .col1{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        & .col2{
+            display: flex;
+            justify-content: end;
+            
+        }
+        & .filter{
+            width: 260px;
+            padding: 11px 18px;
+        }
+    }
+}
+.loadMorePhoto{
+    width: 19.43rem;
+    height: 3.57rem;
+    margin: auto;
+    margin-top: 3rem;
+    border: none;
+}
+
+// *** Responsive mobile ****
+
+@media (max-width: $bpMobile) {
+    .catalogPhoto{
+        width: 100vw;
+        & .column-gallery{
+            display: flex;
+            flex-flow: column;
+            gap: 2rem;
+            justify-content: center;
+            width: 100%;
+            align-items: center;
+        }
+        &__filters{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        }
+}

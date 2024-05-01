@@ -74,15 +74,11 @@
     			        <a href="<?php echo get_permalink( $prev_post ); ?>">
     			        <img class="arrow arrowLeft"src="<?= get_template_directory_uri(); ?>/		assets/	images/fléche-avant.svg" alt="fléche précédente" ></a>
     			        <?php endif; ?>
-    			    </div>
-					<div class="miniature">
-						<div id="prev-miniature" class="hide-miniature miniatureSize">
+						<div id="prev-miniature" class="miniature hide-miniature miniatureSize">
 							<?php echo get_the_post_thumbnail( $prev_post); ?>
 						</div>
-						<div id='next-miniature' class="hide-miniature miniatureSize">
-							<?php echo get_the_post_thumbnail( $next_post); ?>
-						</div>
     			    </div>
+					
     			    <div class="photo-navigation__next-post">
 						
     			        <?php
@@ -90,6 +86,9 @@
     			        <a href="<?php echo get_permalink( $next_post ); ?>">
     			        <img class="arrow arrowRight"src="<?= get_template_directory_uri(); ?>/assets/images/fléche-suivant.svg"alt="fléche suivante" ></a>
     			        <?php endif; ?>
+						<div id='next-miniature' class="miniature hide-miniature miniatureSize">
+							<?php echo get_the_post_thumbnail( $next_post); ?>
+						</div>
     			    </div>
 						
     			</div>
@@ -99,7 +98,7 @@
 		<section class="relatedPicture">
 			<h3 class="relatedPicture__title">vous aimerez aussi</h3>
 
-			<article class="relatedPicture__gallery">
+			<article class="relatedPicture__gallery column-gallery">
 	<?php	
 	// requete wp_query pour afficher 2 photos de la même catéguorie
 		$categorie = array_map(function ($term) {

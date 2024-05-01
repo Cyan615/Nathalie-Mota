@@ -12,3 +12,19 @@
         gap: 6rem;
     }
 }
+#menu-footer>#menu-item-20{
+    display: none;
+}
+
+@media (max-width: $bpMobile){
+    .footerNav{
+        width: 100vw;
+        height: 14.86rem;
+        &__menu{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+    }
+}

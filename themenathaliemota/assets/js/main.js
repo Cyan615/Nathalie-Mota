@@ -1,2 +1,3 @@
 import ('./modal.js') ;
-import ('./single.js') ;
+
+import ('./filters.js') ;

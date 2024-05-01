@@ -12,7 +12,8 @@
 
     <header id="header" class="header"> 
 
-        <nav class="navbar">
+        
+        <nav id="nav" class="navbar">
             <!-- logo -->
             <div class="navbar__logo">
                 <?php  if("has_custom_logo()"): ?>
@@ -25,9 +26,11 @@
             <?php wp_nav_menu(array(
                     'theme_location' => 'main-menu',
                     'container' => 'ul',
-                    'menu_class' => 'navbar__menu'
+                    'menu_class' => 'navbar__menu '
                 ));  ?>
-
+                
+        <!-- bouton ouverture/fermeture menu burger -->
+            <div id="icones"></div>
         </nav>
 
         

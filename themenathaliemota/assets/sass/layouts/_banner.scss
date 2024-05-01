@@ -1,6 +1,6 @@
 .banner{
-    max-width: 100%;
-    height: 60rem;
+    max-width: 100vw;
+    // height: 126.5vh;
     position: relative;
     &__img{
         width: 100%;
@@ -8,7 +8,19 @@
     }
     &__slogan{
         position: absolute;
-        top: 50%;
-        left: 25%
+        top: 40%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    
+    }
+}
+@media (max-width: $bpMobile){
+    .banner{
+
+        &__slogan{
+        font-size: calc(1.5rem + 1.5vw);
+        line-height: 2.92rem;
+        }
+
     }
 }

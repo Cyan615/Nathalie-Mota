@@ -1,10 +1,11 @@
+'use strict';
 console.log('OK modal js');
-window.onload = () => {
+
     const modalBtnOpen = document.getElementById('menu-item-20');
     const modal = document.getElementById('contactModal');
     const btnOpen = document.querySelector('.open-popup');
 
-// fonction d'ouverture de la modale
+// fonction d'ouverture de la modale contacte
     function openModal(e) {
         e.preventDefault();
         modal.style.display = null ;
@@ -19,7 +20,7 @@ window.onload = () => {
         modal.style.display = "none";
         modal.classList.remove('show');
     }
-    
+window.onload = () => {    
     // Ouverture de la modale au clique sur le bouton Contact du menu 
     modalBtnOpen.addEventListener("click", openModal);
     // Fermeture de la modale au clique sur le bouton fermeture
@@ -37,10 +38,25 @@ window.onload = () => {
        }
     }
      
+    
+
 }
 
+// *** Ouverture du menu burger
 
-
+    const links = document.querySelectorAll("#nav li");
+    console.log(links);
+    icones.addEventListener("click", () => {
+        nav.classList.toggle("active");
+        console.log('icons listener');
+    });
+  console.log(icones);
+    // fermeture au clique sur item
+    links.forEach((link) => {
+        link.addEventListener("click", () => {
+            nav.classList.remove("active");
+        })
+    })
 
   
 

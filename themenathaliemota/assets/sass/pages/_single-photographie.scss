@@ -39,6 +39,12 @@
     & #prev-miniature{
         z-index: 2;
     }
+    &__next-post:hover .hide-miniature{
+        transform: scale(1);
+    }
+    &__prev-post:hover .hide-miniature{
+        transform: scale(1);
+    }
 }
 .miniatureSize {
     width: 81px;
@@ -48,7 +54,8 @@
     right: 0.5rem;
 }
 .hide-miniature{
-    display: none;
+    transition: 0.2s;
+    transform: scale(0);
 }
 
 

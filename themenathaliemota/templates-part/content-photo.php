@@ -25,8 +25,8 @@ $categories = get_the_terms(get_the_ID(), 'categorie');
     <!-- accés aux info de la photo avec l'icone oeil -->
     <div class="frame-Overlay">
         
-        <div class="frame-Overlay__fullscreen">
-            <a  href="<?php echo $url_post ?>"><img src="<?php echo $template_uri?>/assets/images/fullscreen-icon.png" alt="icone pleine écran"></a>
+        <div class="frame-Overlay__fullscreen lightboxAjax" data-lightbox-postId="<?php echo get_the_ID() ?>">
+            <img src="<?php echo $template_uri?>/assets/images/fullscreen-icon.png" alt="icone pleine écran">
         </div>
         
         <a class="frame-Overlay__eye" href="<?php echo $url_post ?>"><img src="<?php echo $template_uri?>/assets/images/oeil.svg" alt="icone oeil pour accéder aux informations de la photo"></a>

@@ -45,7 +45,7 @@ p{
     font-family: 'Space-mono';
     font-weight: 700;
     font-style: italic;
-    font-size: 6rem;
+    font-size: calc(4.3rem + 2.5vw);
     line-height: 8.9rem;
     text-transform: uppercase;
 }
@@ -69,5 +69,16 @@ button{
     }
      h3{
         font-size: 1.125rem; 
+    }
+    .navbar__menu li a{
+        font-size: 44px;
+        line-height: 65.16px;
+        color: $white;
+    }
+    @supports (-webkit-text-stroke: 0.86px $white) {
+        .hero-slogan{
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0.86px $white;
+        }
     }
 }
