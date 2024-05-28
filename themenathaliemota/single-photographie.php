@@ -61,8 +61,11 @@
 			</aside>
 			<!-- bloque navigation photo et contacte -->
 			<article class="single-postPhoto__contactPhoto">
-    			<p>Cette photo vous intéresse ?</p>
-    			<button class="open-popup" data-reference="<?php echo $reference; ?>">Contact</button>
+				<div class="rightpart">
+					<p>Cette photo vous intéresse ?</p>
+    				<button class="open-popup" data-reference="<?php echo $reference; ?>">Contact</button>
+				</div>
+    			
     			<div class="photo-navigation">
     			    <?php 
 					$next_post = get_next_post();

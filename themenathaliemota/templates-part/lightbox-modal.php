@@ -26,20 +26,20 @@ $reference = get_field('reference');
 ?>
 
 
-<section id="lightbox" role="dialog">
+<section id="motalightbox" role="dialog">
 
     <article class="lightbox">
         <button class="lightbox__close" ></button> 
+        
         <button class="lightbox__prev" ><img class="arrowImg" src="<?php echo $template_uri; ?>/assets/images/fleche-prev.svg') " alt="flèche photo précédente">Précédente</button>
+        
         <button class="lightbox__next" name="suivant">Suivante<img class="arrowImg" src="<?php echo $template_uri; ?>/assets/images/fleche-next.svg') " alt="flèche photo suivante"></button>
-        <div class="lightbox__container">
-            
-            <img src="<?php the_post_thumbnail_url();  ?>" alt="$photo_alt">
-             
-        </div>       
+        
+           
+        <img src="" alt="photographie sélectionné" class="lightbox__image">
 
-        
-        
+        <span class="lightbox__refPhoto"></span>
+        <span class="lightbox__catPhoto"></span>
         
     </article>
 </section>

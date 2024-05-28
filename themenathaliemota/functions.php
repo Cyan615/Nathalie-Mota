@@ -33,21 +33,30 @@ function mota_register_menu(){
 function mota_register_scripts(){
     // Déclarer le js
     wp_enqueue_script('theme_js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0.0', true);
+     // Déclarer le jquery
+    wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.7.1.min.js', array(), true);
+
+    
     // ** passage de données entre php et JS **
-    $script_data_array = array(
-        'ajaxurl' => admin_url('admin-ajax.php'),
-    );
-    wp_localize_script('theme_js', 'main.js', '$script_data_array');
+    if ( isset($_SERVER['HTTPS']) )  
+            $protocol = 'https://';  
+        else  
+            $protocol = 'http://';  
+ 
+     // pass Ajax Url to script.js
+     wp_localize_script('theme_js', 'load_params' , [
+        'ajaxurl' => admin_url( 'admin-ajax.php', $protocol ) 
+        ]);
+
 
     // Déclarer le css compilé sass
     wp_enqueue_style('theme_style', get_template_directory_uri() . '/css/style.css');
     
-    // Déclarer le jquery
-    wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.7.1.min.js', array(), true);
+   
 }
 
 // affichage du lien 'Contact' dans le menu header
-function contact_modal_add($items, $args){
+function contact_modal_add($items){
     
         $contactItemMenu = '<li id="menu-item-20" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-8 current_page_item menu-item-20">
         <a href="'.get_site_url().'/wp-content/theme/themenathaliemota/templates-part/modalcontact.php/"  aria-current="page" itemprop="url">contact</a></li>';
@@ -59,23 +68,41 @@ function contact_modal_add($items, $args){
 
 // *** Fonction pour le bouton charger plus ***
 function mota_load_more(){
-    if( 
-		! isset( $_REQUEST['nonce'] ) or 
-       	! wp_verify_nonce( $_REQUEST['nonce'], 'mota_load_more' ) 
-    ) {
-    	wp_send_json_error( "Vous n’avez pas l’autorisation d’effectuer cette action.", 403 );
-  	}
+    $page = $_POST['page'];
+    $categorie = $_POST['categorie'];
+    $format = $_POST['format'];
+    $order = $_POST['annee'];
 
-      $page = get_query_var('page')  ;
-      $pagemore =+ $page ;
-      $myquery = new WP_Query([
-        'post_type' => 'photographie',
-        'posts_per_page' => 8,
-        'paged' => $pagemore,
-        'orderby' => 'rand',
-        'order' => 'DESC',
-        // affichage de 8 photos au hasard par ordre décroissant par page 
-        ]);
+    
+
+    $args = [
+        'post_type'     => 'photographie',
+        'order'         => ($order === 'ASC') ? 'ASC' : 'DESC',
+        'orderby'       => 'annee',
+        'post_per_page' => '8',
+        'paged'         => $page,
+        'tax_query'     => [
+            'relation' => 'AND',
+        ]
+    ];
+
+    if (!empty($categorie)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $categorie,
+        ];
+    }
+    
+    if (!empty($format)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format,
+        ];
+    }    
+
+    $myquery = new WP_Query($args);
 
      // boucle wp_jquery 
     if ($myquery->have_posts()) {
@@ -85,36 +112,15 @@ function mota_load_more(){
          
         endwhile;
     };
+    
             // réinisialisé la requête wp_query
-    wp_reset_postdata();   
+    wp_reset_postdata(); 
+    
+    
+    exit();
+     
 }
-// fonction pour les filtres de selections photo
 
-function mota_request_byfilters(){
-    $args = [
-        'post_type' => 'photographie',
-        'post_per_page' => -1,
-        'meta_query' => [
-            'relation' => 'AND',
-            [
-                'key' => 'annee',
-                'value' => $choice_annee ,
-                'compare' => 'LIKE'
-            ]
-        ]
-    ];
-    $query = new WP_Query($args);
-
-    if($query->have_posts()) {
-        $response = $query;
-    } else {
-        $response = false;
-    }
-
-    wp_send_json($response);
-
-    wp_die();
-}
 
 // ******* ACTION *******
 add_action('after_setup_theme', 'mota_setup');

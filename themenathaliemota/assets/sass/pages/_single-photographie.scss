@@ -7,22 +7,24 @@
     flex-wrap: wrap;
     align-items: flex-end;
     &__photoInRight{  // Block photo à droite
-        width: 50%;
+        width: 49%;
         max-height: 149.6vh;
         object-fit: contain;
+        padding-left: 0.8rem;
         
-        &>img{
-            padding-left: 0.8rem;
-        }
     }
     &__contactPhoto{   //Block de contacte du dessous
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 79vw;
-        
-        //height: 32vh;
         border-bottom: $parting-line-thickness solid $text-Color;
+        & .rightpart{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+        }
         p{
             font-size: 14px;
             margin: 3rem 0;
@@ -33,8 +35,7 @@
 .photo-navigation{
     display: flex;
     position: relative;
-    margin: 0.3rem;
-    padding-right: 1.4rem;
+    margin: 0.3rem 0;
     padding-top: 5rem;
     & #prev-miniature{
         z-index: 2;

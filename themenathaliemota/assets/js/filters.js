@@ -1,44 +1,41 @@
 'use strict';
-
-// ** Bouton 'Charger plus' **
-// (function ($) {
-//     $(document).ready(function () {
-  
-//         $('.loadMorePhoto').click(function(e) {
-//             e.preventDefault();
-
-//             const ajaxurl = $(this).data('ajaxurl');
-
-//             const data = {
-//                 action: $(this).data('action'), 
-//                 nonce:  $(this).data('nonce'),
-//                 postid: $(this).data('postid'),
-//         }
-        
-//         fetch(ajaxurl, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/x-www-form-urlencoded',
-//                 'Cache-Control': 'no-cache',
-//             },
-//             body: new URLSearchParams(data),
-//         })
-//         .then(response => response.json())
-//         .then(body => {
-//             console.log(body);
-//             if (!body.success) {
-//                 alert(response.data);
-//                 return;
-//             }
-            
-//         });
-//     });
+console.log("OK charger plus");
+let morepage = 1;
+jQuery(document).ready(function ($){
     
-   
-//     });
-//   })(jQuery);
+    let categorie = "";
+    let format = "";
+    let order = "";
+    $("#loadMore").on("click", function () {
 
+        
+    morepage++;
 
+    // requète Ajax
+    $.ajax({
+        url: load_params.ajaxurl,
+        type: "POST",
+        dataType: 'html',
+        data: {
+            action: "mota_load_more",
+            categorie: categorie,
+            format: format,
+            order: order,
+            paged: morepage,
+            
+        },
+    
+        success: function (response) {
+            if (response) {
+                console.log(response); 
+                $(".collumn-gallery").append(response);
+
+            }
+        },
+    });console.log($.ajax());
+
+    })
+})
 
 
 

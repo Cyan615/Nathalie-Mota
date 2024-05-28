@@ -63,8 +63,7 @@
 			'post_type' => 'photographie',
 			'posts_per_page' => 8,
 			'paged' => $page,
-			'orderby' => 'rand',
-			'order' => 'DESC',
+			'post__not_in' => array(get_the_ID()),
 			// affichage de 8 photos au hasard par ordre décroissant par page 
 		]);
  // boucle wp_jquery 
@@ -81,7 +80,7 @@
     ?>
     </article>
 
-    <button id="loadMorePhoto" class="loadMorePhoto btn-more "
+    <button id="loadMore" class="loadMore btn-more "
             data-postId="<?php echo get_the_ID(); ?>",
             data-ajaxurl="<?php echo admin_url( 'admin-ajax.php' ); ?>"
             data-action="mota_load_more"

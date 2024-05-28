@@ -20,7 +20,7 @@ console.log('OK modal js');
         modal.style.display = "none";
         modal.classList.remove('show');
     }
-window.onload = () => {    
+  
     // Ouverture de la modale au clique sur le bouton Contact du menu 
     modalBtnOpen.addEventListener("click", openModal);
     // Fermeture de la modale au clique sur le bouton fermeture
@@ -40,17 +40,17 @@ window.onload = () => {
      
     
 
-}
+
 
 // *** Ouverture du menu burger
 
     const links = document.querySelectorAll("#nav li");
-    console.log(links);
+    // console.log(links);
     icones.addEventListener("click", () => {
         nav.classList.toggle("active");
         console.log('icons listener');
     });
-  console.log(icones);
+//   console.log(icones);
     // fermeture au clique sur item
     links.forEach((link) => {
         link.addEventListener("click", () => {
