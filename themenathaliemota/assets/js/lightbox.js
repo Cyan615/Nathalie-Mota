@@ -1,15 +1,12 @@
-'use strict';
 
-console.log("la lightbox est lancée");
 
- 
-       // on récupere les élements->
+
+document.addEventListener("DOMContentLoaded", function(){
+    console.log("la lightbox est lancée");
+    // on récupere les élements->
     const container = document.getElementById('motalightbox');
-    // console.log(container);
     const lightboxClose = document.querySelector(".lightbox__close");
-    // console.log(lightboxClose);
     const photo = document.querySelector(".lightbox__image");
-    // console.log(photo);
     const photoCategorie = document.querySelector(".lightbox__catPhoto");
     // console.log(photoCategorie);
     const photoRef = document.querySelector(".lightbox__refPhoto");
@@ -26,12 +23,14 @@ console.log("la lightbox est lancée");
 
 // on récupère les photos de la galerie->
         const photoCards = Array.from(photoGallery.querySelectorAll(".photoCard"));
-        console.log(photoCards);
-        let indexCurrentPost = "";
+        
+        let indexCurrentPost;
     // fonction pour ouvrir et charger la lightbox
         function showLightbox(e) {
+            const photoAffiche = e.querySelector(".lightboxIcon").getAttribute("data-photoUrl");
             // charger les élement dans la lightbox via data attribu
-            photo.src = e.querySelector(".lightboxIcon").getAttribute("data-photoUrl");
+            photo.src = photoAffiche;
+            // photo.src = e.querySelector(".lightboxIcon").getAttribute("data-photoUrl");
             
             photoRef.textContent = e.querySelector(".lightboxIcon").getAttribute("data-lightboxRef");
 
@@ -42,15 +41,17 @@ console.log("la lightbox est lancée");
         };
 
         function photoPrecedente(){
+            console.log('index de la photo: '+indexCurrentPost);
             //on décrément pour avoir l'index du post précédent
             indexCurrentPost--;
-            // console.log(indexCurrentPost);
+            console.log('index de la photo précedente: '+indexCurrentPost);
             // si l'index est inferieure à 0 on masque le 'précédente' 
-            if (indexCurrentPost <= 0) {
+            if (indexCurrentPost < 0) {
                 photoPrev.style.display="none";
             }
             // on remplace la photo actuelle par le post précédent qu'on aura récupéré->
             let prevPostRecup = photoCards[indexCurrentPost];
+            
             showLightbox(prevPostRecup);
         }
 // on duplique la fonction pour l'image suivante
@@ -58,12 +59,13 @@ console.log("la lightbox est lancée");
             //on incrémente pour avoir l'index du post suivant
             indexCurrentPost++;
             // à la dernière photo on masque le "suivante" 
-            if (indexCurrentPost >= photoCards.length) {
+            if (indexCurrentPost > photoCards.length) {
                 photoNext.style.display="none";
             }
             // on remplace la photo actuelle par le post suivant qu'on aura récupéré->
             let nextPostRecup = photoCards[indexCurrentPost];
             showLightbox(nextPostRecup);
+            
         }
 // ouverture de la lightbox
         photoGallery.addEventListener("click", function(event) {
@@ -87,16 +89,25 @@ console.log("la lightbox est lancée");
         });
 
     // gestion des flèches 
-        photoNext.addEventListener("click",function () {
-            console.log("photo suivente");
-        } );
-        //photoSuivante()
-        photoPrev.addEventListener("click", photoPrecedente());
+        photoPrev.addEventListener("click", function () {
+            alert("bouton photo précédente")
+            photoPrecedente();
+        });
+
+        photoNext.addEventListener("click", function () {
+            // alert("bouton photo suivante")
+            photoSuivante();
+        });
         
     };
 
+ 
 
-    
+
+
+    // function () {
+    //     console.log("photo suivente");
+    } );
  
     
     

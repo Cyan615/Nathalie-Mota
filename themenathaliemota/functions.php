@@ -32,22 +32,17 @@ function mota_register_menu(){
 // script css et JS
 function mota_register_scripts(){
     // Déclarer le js
-    wp_enqueue_script('theme_js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('lightbox_js', get_template_directory_uri() . '/assets/js/lightbox.js', array('jquery'), '1.0.0', true);
+
+    wp_enqueue_script('filters', get_template_directory_uri() . '/assets/js/filters.js', array('jquery'), '1.0.0', true);
+    $url = admin_url('admin-ajax.php');
+    wp_localize_script('filters', 'ajaxurl', $url);
      // Déclarer le jquery
-    wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.7.1.min.js', array(), true);
+    wp_enqueue_script('jquery');
 
     
-    // ** passage de données entre php et JS **
-    if ( isset($_SERVER['HTTPS']) )  
-            $protocol = 'https://';  
-        else  
-            $protocol = 'http://';  
- 
-     // pass Ajax Url to script.js
-     wp_localize_script('theme_js', 'load_params' , [
-        'ajaxurl' => admin_url( 'admin-ajax.php', $protocol ) 
-        ]);
-
+   
 
     // Déclarer le css compilé sass
     wp_enqueue_style('theme_style', get_template_directory_uri() . '/css/style.css');
@@ -66,71 +61,28 @@ function contact_modal_add($items){
     return $items;
 };
 
-// *** Fonction pour le bouton charger plus ***
-function mota_load_more(){
-    $page = $_POST['page'];
-    $categorie = $_POST['categorie'];
-    $format = $_POST['format'];
-    $order = $_POST['annee'];
-
-    
-
-    $args = [
-        'post_type'     => 'photographie',
-        'order'         => ($order === 'ASC') ? 'ASC' : 'DESC',
-        'orderby'       => 'annee',
-        'post_per_page' => '8',
-        'paged'         => $page,
-        'tax_query'     => [
-            'relation' => 'AND',
-        ]
-    ];
-
-    if (!empty($categorie)) {
-        $args['tax_query'][] = [
-            'taxonomy' => 'categorie',
-            'field' => 'slug',
-            'terms' => $categorie,
-        ];
-    }
-    
-    if (!empty($format)) {
-        $args['tax_query'][] = [
-            'taxonomy' => 'format',
-            'field' => 'slug',
-            'terms' => $format,
-        ];
-    }    
-
-    $myquery = new WP_Query($args);
-
-     // boucle wp_jquery 
-    if ($myquery->have_posts()) {
-        while ($myquery->have_posts()) : $myquery->the_post();
-        
-        get_template_part('templates-part/content-photo', 'post');     
-         
-        endwhile;
-    };
-    
-            // réinisialisé la requête wp_query
-    wp_reset_postdata(); 
-    
-    
-    exit();
-     
-}
 
 
+
+
+   
 // ******* ACTION *******
 add_action('after_setup_theme', 'mota_setup');
 add_action( 'init', 'mota_register_menu' );
 add_action('wp_enqueue_scripts', 'mota_register_scripts');
 add_filter('wp_nav_menu_items', 'contact_modal_add', 10, 2);
 
-add_action('wp_ajax_request_byfilters', 'mota_request_byfilters');
-add_action('wp_ajax_nopriv_request_byfilters', 'mota_request_byfilters');
 
-add_action('wp_ajax_mota_load_more', 'mota_load_more');
-add_action('wp_ajax_nopriv_mota_load_more', 'mota_load_more');
+
+/**
+ * * Gallery query
+ * 
+ */
+
+ require get_template_directory() . '/template/gallery-query.php';
+
+// add_action('wp_ajax_request_byfilters', 'mota_request_byfilters');
+// add_action('wp_ajax_nopriv_request_byfilters', 'mota_request_byfilters');
+
+
 

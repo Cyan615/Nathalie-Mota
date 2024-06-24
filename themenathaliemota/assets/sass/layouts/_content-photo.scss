@@ -62,15 +62,3 @@
 
 }
 
-@media (max-width: $bpMedium){
-    .photoCard{
-        width: calc(18rem + 14vw);
-        height: 19.91rem;        
-    }
-}
-@media (max-width: $bpMobile){
-    .photoCard{
-        width: 22.69rem;
-        height: 19.91rem;        
-    }
-}

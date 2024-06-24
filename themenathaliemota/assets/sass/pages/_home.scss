@@ -40,21 +40,4 @@
 
 // *** Responsive mobile ****
 
-@media (max-width: $bpMobile) {
-    .catalogPhoto{
-        width: 100vw;
-        & .column-gallery{
-            display: flex;
-            flex-flow: column;
-            gap: 2rem;
-            justify-content: center;
-            width: 100%;
-            align-items: center;
-        }
-        &__filters{
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        }
-}
+

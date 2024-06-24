@@ -138,9 +138,6 @@
 	?>					
 			</article>
 		</section>
- 
-	 
- 
  <?php
  	 endwhile; // End of the loop. 
 	endif;   

@@ -26,8 +26,6 @@ console.log('OK modal js');
     // Fermeture de la modale au clique sur le bouton fermeture
     document.querySelector('.modal-content__closebtn').addEventListener("click", closeModal);
     
-    // Ouverture de la modale avec la référence photo pré-remplie
-    btnOpen.addEventListener("click", openModal);
     
     if(btnOpen){
        let refPhoto = btnOpen.dataset.reference;
@@ -37,7 +35,14 @@ console.log('OK modal js');
         refInput.value = refPhoto;
        }
     }
-     
+    if(btnOpen) {
+    // Ouverture de la modale avec la référence photo pré-remplie
+        btnOpen.addEventListener("click", openModal);
+    }else{
+        console.log("le bouton  .open-popup n'est pas présent");
+    };
+
+    
     
 
 

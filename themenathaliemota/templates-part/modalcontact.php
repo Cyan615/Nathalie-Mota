@@ -16,8 +16,6 @@ $template_uri = get_template_directory_uri();
 		// On insère le formulaire de demandes de renseignements
 		echo do_shortcode('[contact-form-7 id="7de56ba" title="modal-contactForm"]');
 		?>
-
-        
         </div>
         
     </article>

@@ -30,18 +30,19 @@
         position: absolute;
         bottom: 2%;
         right: 11%;
-        border:1px solid $darkBlue;
+        cursor: pointer;
         border-radius: 50%;
         
         transition: 0.4s all ease-in-out;
         width: 2rem;
         height: 2rem;
-        background: radial-gradient(circle, $grey 45%, $red3 98%);
+        background: radial-gradient(circle, $grey 27%, $red3 64%);
     }
     &__closebtn:hover{
-        cursor: pointer;
-        transform: scale(1.4);
+        
+        transform: scale(1.4) rotate(360deg);
         background: $greyLight;
+        border: 2px solid $red;
         
     }
     &__header{

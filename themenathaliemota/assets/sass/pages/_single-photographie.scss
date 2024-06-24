@@ -1,5 +1,5 @@
 .main-photo{
-    margin: 2rem 7vw 7vw 9.5rem;
+    margin: 6vw;
 }
 // Zone de contenu
 .single-postPhoto{
@@ -7,27 +7,29 @@
     flex-wrap: wrap;
     align-items: flex-end;
     &__photoInRight{  // Block photo à droite
-        width: 49%;
-        max-height: 149.6vh;
-        object-fit: contain;
+        width: $width-block-2col;
+        max-height: 144.6vh;
         padding-left: 0.8rem;
         
     }
     &__contactPhoto{   //Block de contacte du dessous
         display: flex;
+        
         justify-content: space-between;
         align-items: center;
-        width: 79vw;
+        width: 100%;
         border-bottom: $parting-line-thickness solid $text-Color;
+        min-height: 13vh;
         & .rightpart{
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             width: 50%;
         }
         p{
             font-size: 14px;
-            margin: 3rem 0;
+            margin: 2rem 0;
         }
     }
 }
@@ -62,7 +64,7 @@
 
 // Block info sur la gauche
 .left-blockInfo{
-    width: 50%;
+    width: $width-block-2col;
     &__title{
         font-size: 4.71rem;
         line-height: 4.14rem;
