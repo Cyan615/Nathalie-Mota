@@ -22,20 +22,17 @@
         get_template_part('templates-part/filters', 'post');
     ?>
     </article>
-
+<!-- // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; -->
 <!-- Affichage gallerie photos -->
     <article class="column-gallery" id="galleryPhoto" >
 <!-- ma boucle qui me ramène tous les custom post type "photographie" -->
 <?php 
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
+$displayed_posts = array();
 $argsgallery = array(      // affichage de 8 photos au hasard par ordre décroissant par page
 	'post_type' => 'photographie',
 	'posts_per_page' => 8,
-	// 'paged' => $paged,
-    // 'order_by' => 'categorie',
-    // 'order' => 'DESC',
-    'post__not_in' => array(get_the_ID()),
+    'order_by' => 'rand',
+    // 'post_not_in' => $displayed_posts,
 );
 $query = new WP_Query( $argsgallery );  
 
@@ -43,7 +40,7 @@ $query = new WP_Query( $argsgallery );
     if ($query->have_posts()) {
 			while ($query->have_posts()) : $query->the_post();
 			
-				
+			$displayed_posts[] = get_the_ID();	
 			get_template_part('templates-part/content-photo', 'post'); 
 				
 			endwhile;

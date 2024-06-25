@@ -74,39 +74,9 @@ add_filter('wp_nav_menu_items', 'contact_modal_add', 10, 2);
  * 
  */
 
-//  require get_template_directory() . '/template/gallery-query.php';
+ require get_template_directory() . '/template/gallery-query.php';
 
 
-/**
- * * handler Ajax pour la fonction 'charger plus'
- * 
- */
-function loadMore_photographie() {
-    $paged = isset($_POST['mypage'])? sanitize_text_field($_POST['mypage']):1;
-    $arg= array(
-        'post_type'     => 'photographie',
-        'post_per_page' => 8,
-        'paged'         => $paged,
-        'post__not_in' => array(get_the_ID()),
-    );
-
-    $myquery = new WP_Query($arg);
-
-    if ($myquery->have_posts()) :
-        while ($myquery->have_posts()):$myquery->the_post() ;    
-            get_template_part('templates-part/content-photo', 'post');
-        endwhile;
-    else:
-        echo'';
-    endif;
-
-    wp_reset_postdata();
-    die();
-    
-}
-   
-add_action('wp_ajax_load_more', 'loadMore_photographie');
-add_action('wp_ajax_nopriv_load_more', 'loadMore_photographie');
 
 
 

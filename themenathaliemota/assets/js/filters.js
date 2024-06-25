@@ -19,7 +19,7 @@ $('#loadMore').on('click', function(){
                 $('#galleryPhoto').append(response);
                 mypage++;
             }else{
-                $('#loadMore').text('Fin');
+                $('#loadMore').text('Fin de la gallery');
                 $('#loadMore').prop('disabled',true);
             }
         },
