@@ -29,14 +29,15 @@
 <?php 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-$args = array(      // affichage de 8 photos au hasard par ordre décroissant par page
+$argsgallery = array(      // affichage de 8 photos au hasard par ordre décroissant par page
 	'post_type' => 'photographie',
 	'posts_per_page' => 8,
-	'paged' => $paged,
-    'order_by' => 'rand',
-    'order' => 'DESC',
+	// 'paged' => $paged,
+    // 'order_by' => 'categorie',
+    // 'order' => 'DESC',
+    'post__not_in' => array(get_the_ID()),
 );
-$query = new WP_Query( $args );  
+$query = new WP_Query( $argsgallery );  
 
  // boucle wp_jquery 
     if ($query->have_posts()) {
@@ -46,33 +47,40 @@ $query = new WP_Query( $args );
 			get_template_part('templates-part/content-photo', 'post'); 
 				
 			endwhile;
-		};
-        		// réinisialisé la requête wp_query
-		wp_reset_postdata();
-
+            wp_reset_postdata();    // réinisialisé la requête wp_query
+		}else{
+            echo"Il n'y a pas de photoghaphie";
+        };
+    
+        		
+		
+        
 ?>      
-			<!-- 'post__not_in' => array(get_the_ID()), -->
+			
 			 
     </article>
+
+    <button id="loadMore" class="loadMore btn-more ">Charger plus</button>
+
 <!-- **** on retire le bouton charger plus si il n'y a plus de post**** -->
-    <?php	
+    <!-- <?php	
 				 
 		if (  $query->max_num_pages > 1 ) {
             echo '<button id="loadMore" class="loadMore btn-more ">Charger plus</button>';
         }else{
             echo '<button id="loadMore" class="loadMore btn-more " type="hiden">fin</button>';
         };
-	?>
+	?> -->
    
 
 </section>
 
 </main><!-- #main -->
 <!-- variable pour le maintient du bouton charger plus -->
-<script>
+<!-- <script>
     var photo_myajax = '<?php echo serialize($query->query_vars )  ?>',
     current_page_myajax = 1,
     max_page_myajax = <?php echo $query->max_num_pages  ?>
-</script>
+</script> -->
 
 <?php get_footer(); ?>

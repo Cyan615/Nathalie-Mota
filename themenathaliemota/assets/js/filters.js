@@ -1,76 +1,32 @@
-console.log("fichier filtres photo");
+console.log("Chargement filtres & bouton charger plus");
 
+jQuery(document).ready(function($){
 
-
-        
-jQuery(document).ready(function ($) {
-
-    $('#filterCategorie, #filterFormat, #filterDate').change(function () {
-      let categorie = $('#filterCategorie').val();
-      let formats = $('#filterFormat').val();
-      let order = $('#filterDate').val(); // Récupérer la valeur de tri 
-      $.ajax({
-        url: ajax_url,
-        type: 'POST',
-        data: {
-          action: 'mota_load_photo',
-          categorie: categorie,
-          formats: formats,
-          order: order, // Envoyer la valeur de tri
-        },
-        success: function (response) {
-          $('#galleryPhoto').html(response);
-        },
-      });
-    });
-  });  
-  
-  jQuery(document).ready(function ($) {
-    let currentCategorie = $('#filterCategorie').val();
-    let currentFormats = $('#filterFormat').val();
-    let currentOrder = $('#filterDate').val();    
-
-    function loadMorePhotos(page) {
-      $.ajax({
+// bouton charger plus ->
+var mypage = 2;
+$('#loadMore').on('click', function(){
+    // console.log('click charger plus');
+    var data = {
+        'action': 'load_more',
+        'page': mypage,
+    };
+    $.ajax({
         url: ajaxurl,
         type: 'POST',
-        data: {
-          action: 'mota_load_photo',
-          categorie: currentCategorie,
-          formats: currentFormats,
-          order: currentOrder,
-          page: page,
+        data: data,
+        success: function(response){
+            if (response) {
+                $('#galleryPhoto').append(response);
+                mypage++;
+            }else{
+                $('#loadMore').text('Fin');
+                $('#loadMore').prop('disabled',true);
+            }
         },
-        success: function (response) {
-          console.log('page', page);
-          console.log('response', response);
-          if (page === 1) {
-            $('#galleryPhoto').html(response);
-          } else {
-            $('#galleryPhoto').append(response);
-          } if (
-            $('#no-more-posts').length > 0 ||
-            $(response).filter('.photo-item').length < 8
-          ) {
-            $('#loadMore').hide();
-          } else {
-            $('#loadMore').show().data('page', page);
-          }
-        },
-      });
-    }    
-    $('#filterCategorie, #filterFormat, #filterDate').change(function () {
-      currentCategorie = $('#filterCategorie').val();
-      currentFormats = $('#filterFormat').val();
-      currentOrder = $('#filterDate').val();     
-      loadMorePhotos(1); // Réinitialiser et charger la première page
-    });    
-    
-    $('#loadMore').click(function () {
-      let page = $(this).data('page') + 1;
-      loadMorePhotos(page);
     });
-  });
+
+
+});
 
 
 
@@ -78,8 +34,5 @@ jQuery(document).ready(function ($) {
 
 
 
-
-
-
-
+});
 

@@ -36,7 +36,7 @@ function mota_register_scripts(){
     wp_enqueue_script('lightbox_js', get_template_directory_uri() . '/assets/js/lightbox.js', array('jquery'), '1.0.0', true);
 
     wp_enqueue_script('filters', get_template_directory_uri() . '/assets/js/filters.js', array('jquery'), '1.0.0', true);
-    
+
     // url pour requète Ajax
     $url = admin_url('admin-ajax.php');
     wp_localize_script('filters', 'ajaxurl', $url);
@@ -62,21 +62,51 @@ function contact_modal_add($items){
     return $items;
 };
 
-/**
- * * Gallery query
- * 
- */
-
- require get_template_directory() . '/template/gallery-query.php';
-
-
-
-
-   
 // ******* ACTION *******
 add_action('after_setup_theme', 'mota_setup');
 add_action( 'init', 'mota_register_menu' );
 add_action('wp_enqueue_scripts', 'mota_register_scripts');
 add_filter('wp_nav_menu_items', 'contact_modal_add', 10, 2);
+
+
+/**
+ * * Gallery query
+ * 
+ */
+
+//  require get_template_directory() . '/template/gallery-query.php';
+
+
+/**
+ * * handler Ajax pour la fonction 'charger plus'
+ * 
+ */
+function loadMore_photographie() {
+    $paged = isset($_POST['mypage'])? sanitize_text_field($_POST['mypage']):1;
+    $arg= array(
+        'post_type'     => 'photographie',
+        'post_per_page' => 8,
+        'paged'         => $paged,
+        'post__not_in' => array(get_the_ID()),
+    );
+
+    $myquery = new WP_Query($arg);
+
+    if ($myquery->have_posts()) :
+        while ($myquery->have_posts()):$myquery->the_post() ;    
+            get_template_part('templates-part/content-photo', 'post');
+        endwhile;
+    else:
+        echo'';
+    endif;
+
+    wp_reset_postdata();
+    die();
+    
+}
+   
+add_action('wp_ajax_load_more', 'loadMore_photographie');
+add_action('wp_ajax_nopriv_load_more', 'loadMore_photographie');
+
 
 
