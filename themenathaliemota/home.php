@@ -25,7 +25,7 @@
 
 <!-- Affichage gallerie photos -->
     <article class="column-gallery" id="galleryPhoto" >
-<!-- ma boucle qui me ramène tous les custom post type "formation" -->
+<!-- ma boucle qui me ramène tous les custom post type "photographie" -->
 <?php 
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
@@ -34,7 +34,7 @@ $args = array(      // affichage de 8 photos au hasard par ordre décroissant pa
 	'posts_per_page' => 8,
 	'paged' => $paged,
     'order_by' => 'rand',
-    // 'order' => 'DESC',
+    'order' => 'DESC',
 );
 $query = new WP_Query( $args );  
 
@@ -54,7 +54,7 @@ $query = new WP_Query( $args );
 			<!-- 'post__not_in' => array(get_the_ID()), -->
 			 
     </article>
-
+<!-- **** on retire le bouton charger plus si il n'y a plus de post**** -->
     <?php	
 				 
 		if (  $query->max_num_pages > 1 ) {
@@ -68,6 +68,7 @@ $query = new WP_Query( $args );
 </section>
 
 </main><!-- #main -->
+<!-- variable pour le maintient du bouton charger plus -->
 <script>
     var photo_myajax = '<?php echo serialize($query->query_vars )  ?>',
     current_page_myajax = 1,

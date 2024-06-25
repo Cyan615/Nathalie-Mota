@@ -36,13 +36,14 @@ function mota_register_scripts(){
     wp_enqueue_script('lightbox_js', get_template_directory_uri() . '/assets/js/lightbox.js', array('jquery'), '1.0.0', true);
 
     wp_enqueue_script('filters', get_template_directory_uri() . '/assets/js/filters.js', array('jquery'), '1.0.0', true);
+    
+    // url pour requète Ajax
     $url = admin_url('admin-ajax.php');
     wp_localize_script('filters', 'ajaxurl', $url);
+
      // Déclarer le jquery
     wp_enqueue_script('jquery');
 
-    
-   
 
     // Déclarer le css compilé sass
     wp_enqueue_style('theme_style', get_template_directory_uri() . '/css/style.css');
@@ -61,6 +62,12 @@ function contact_modal_add($items){
     return $items;
 };
 
+/**
+ * * Gallery query
+ * 
+ */
+
+ require get_template_directory() . '/template/gallery-query.php';
 
 
 
@@ -71,18 +78,5 @@ add_action('after_setup_theme', 'mota_setup');
 add_action( 'init', 'mota_register_menu' );
 add_action('wp_enqueue_scripts', 'mota_register_scripts');
 add_filter('wp_nav_menu_items', 'contact_modal_add', 10, 2);
-
-
-
-/**
- * * Gallery query
- * 
- */
-
- require get_template_directory() . '/template/gallery-query.php';
-
-// add_action('wp_ajax_request_byfilters', 'mota_request_byfilters');
-// add_action('wp_ajax_nopriv_request_byfilters', 'mota_request_byfilters');
-
 
 

@@ -475,15 +475,21 @@ button:hover {
     align-items: center;
   }
   .catalogPhoto__filters {
-    display: flex;
     flex-direction: column;
-    gap: 2rem;
+  }
+  .catalogPhoto__filters .col1 {
+    flex-direction: column;
+    width: 100%;
+  }
+  .filter {
+    width: 80% !important;
+    margin: auto;
   }
 }
-@media (max-width: 1020px) {
+@media (max-width: 1040px) {
   .photoCard {
-    width: calc(18rem + 14vw);
-    height: 19.91rem;
+    width: calc(18rem + 14vw) !important;
+    height: calc(19rem + 4vh) !important;
   }
 }
 @media (max-width: 799px) {
@@ -610,8 +616,8 @@ button:hover {
 }
 
 .custom-logo {
-  width: 15.4rem;
-  height: 1rem;
+  width: 20.4;
+  height: auto;
 }
 
 #icones {
@@ -619,7 +625,6 @@ button:hover {
   display: none;
   width: 25px;
   height: 25px;
-  border: 1px solid #0d4e87;
   padding: 0.5rem;
 }
 
@@ -636,7 +641,6 @@ button:hover {
   #icones::before {
     content: "☰";
     font-size: 1.96rem;
-    position: fixed;
   }
   #icones:hover {
     transform: scale(1.1) rotate(360deg);

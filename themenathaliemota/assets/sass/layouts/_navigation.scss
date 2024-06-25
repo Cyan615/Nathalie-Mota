@@ -16,8 +16,8 @@
     
 }
 .custom-logo{
-    width: 15.4rem;
-    height: 1rem;
+    width: 20.4;
+    height: auto;
 }
 
 // ***** burger menu ***
@@ -26,7 +26,7 @@
     display: none;
     width: 25px;
     height: 25px;
-    border: 1px solid #0d4e87;
+    // border: 1px solid #0d4e87;
     padding: 0.5rem;
 }
 
@@ -42,7 +42,7 @@
         &::before{
             content: "\2630";
             font-size: 1.96rem;
-            position: fixed;
+            // position: fixed;
             
         }
         &:hover{

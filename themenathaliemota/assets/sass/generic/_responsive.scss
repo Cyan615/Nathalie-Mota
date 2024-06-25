@@ -10,16 +10,22 @@
             align-items: center;
         }
         &__filters{
-            display: flex;
             flex-direction: column;
-            gap: 2rem;
+            & .col1{
+                flex-direction: column;
+                width: 100%;
+            }
         }
-        }
+    }
+    .filter{
+        width: 80% !important;
+        margin: auto;
+    }
 }
 @media (max-width: $bpMedium){
     .photoCard{
-        width: calc(18rem + 14vw);
-        height: 19.91rem;        
+        width: calc(18rem + 14vw) !important;
+        height: calc(19rem + 4vh) !important;        
     }
 }
 @media (max-width: $bpMobile){
@@ -60,3 +66,4 @@
         }
     } 
 }
+
