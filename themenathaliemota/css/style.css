@@ -921,6 +921,10 @@ button:hover {
   max-width: 100%;
   height: auto;
 }
+.lightbox__container .img-container {
+  width: 24vw;
+  height: 17vh;
+}
 .lightbox__image {
   width: 40vw;
   height: auto;

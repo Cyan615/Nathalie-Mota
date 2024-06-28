@@ -35,9 +35,10 @@ $reference = get_field('reference');
         
         <button class="lightbox__next" name="suivant">Suivante<img class="arrowImg" src="<?php echo $template_uri; ?>/assets/images/fleche-next.svg') " alt="flèche photo suivante"></button>
         
-           
-        <img src="" alt="photographie sélectionné" class="lightbox__image">
-
+        <div class="img-container">
+            <img src="" alt="photographie sélectionné" class="lightbox__image">
+        </div>   
+        
         <span class="lightbox__refPhoto"></span>
         <span class="lightbox__catPhoto"></span>
         
