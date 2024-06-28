@@ -23,13 +23,13 @@ $categories = get_the_terms(get_the_ID(), 'categorie');
         <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php echo $photo_alt; ?>"></img>
     </div>
     
-    <!-- accés aux info de la photo avec l'icone oeil -->
+    
     <div class="frame-Overlay">
         
         <div class="frame-Overlay__fullscreen lightboxIcon"  data-lightboxRef="<?php echo $reference ?>" data-lightboxCat="<?php echo $nameCategorie ?>" data-photoUrl="<?php echo $photoUrl ?>">
-            <a class="iconfullscreen" href="#motalightbox"><img src="<?php echo $template_uri?>/assets/images/fullscreen-icon.png" alt="icone pleine écran"></a>
+            <div class="iconfullscreen" href="#motalightbox"><img src="<?php echo $template_uri?>/assets/images/fullscreen-icon.png" alt="icone pleine écran"></div>
         </div>
-        
+        <!-- accés aux info de la photo avec l'icone oeil -->
         <a class="frame-Overlay__eye" href="<?php echo $url_post ?>"><img src="<?php echo $template_uri?>/assets/images/oeil.svg" alt="icone oeil pour accéder aux informations de la photo"></a>
         <div class="frame-Overlay__text">
             <p class="--title"><?php echo $title; ?></p>

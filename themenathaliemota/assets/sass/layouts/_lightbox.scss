@@ -46,20 +46,26 @@
         top: 50%;
         right: 1rem;
     }
-    &__container{
+    // &__container{
         
-        max-width: 70.4vw;
-        height: 67.7vh;
-        overflow: auto;
-        & img{
-            max-width: 100%;
-            height: auto;
-        }
+    //     max-width: 70.4vw;
+    //     height: 67.7vh;
+    //     overflow: auto;
+    //     & img{
+    //         max-width: 100%;
+    //         height: auto;
+    //     }
+        
+    //     }
     }
     &__image{
-        width: 40vw;
+        width: auto;
         height: auto;
     }
+    & .img-container{
+            width: 48vw;
+            height: 75vh;
+            overflow: auto;
 } 
 
 
